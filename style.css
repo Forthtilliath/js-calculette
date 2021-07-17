@@ -1,191 +1,427 @@
-@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
 
 body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: hsl(222, 26%, 31%);
-  font-family: "Spartan", sans-serif;
-  color: white;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: hsl(222, 26%, 31%);
+    font-family: 'Spartan', sans-serif;
+    color: white;
+}
+
+section {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    padding-top: calc(3rem + 50vh) 1.5rem 5rem;
 }
 
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 800px;
-  height: 850px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 850px;
+    max-height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
 }
 
 .title-calc {
-  margin-left: 30px;
+    margin-left: 30px;
 }
 
 .screen-calc {
-  margin-left: 30px;
-  background-color: hsl(224, 36%, 15%);
-  width: 740px;
-  height: 150px;
-  border-radius: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  box-sizing: border-box;
-  overflow: hidden;
-  white-space: nowrap;
+    margin-left: 30px;
+    background-color: hsl(224, 36%, 15%);
+    width: 740px;
+    height: 150px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .screen-calc-content {
-  float: right;
+    float: right;
+    width: 720px;
 }
 
-#output {
-  height: 80px;
-  font-size: 80px;
-  margin-top: 0px;
-  padding-top: 35px;
-  text-align: right;
+.output {
+    height: 80px;
+    font-size: 80px;
+    margin-top: 0px;
+    padding-top: 35px;
+    text-align: right;
 }
 
 .numpad-bg {
-  margin-left: 30px;
-  margin-top: 20px;
-  background-color: hsl(223, 31%, 20%);
-  width: 740px;
-  height: 590px;
-  border-radius: 15px;
+    margin-left: 30px;
+    margin-top: 20px;
+    background-color: hsl(223, 31%, 20%);
+    width: 740px;
+    height: 590px;
+    border-radius: 15px;
 }
 
 .numpad-calc {
-  width: 720px;
-  height: 560px;
-  margin-left: 10px;
-  padding-top: 10px;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 10px;
-  grid-row-gap: 17px;
-  grid-template-areas:
-    "sept huit neuf DEL"
-    "quatre cinq six addition"
-    "un deux trois soustraction"
-    "virgule zero division multiplication"
-    "reset reset egal egal";
+    width: 720px;
+    height: 560px;
+    margin-left: 10px;
+    padding-top: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 17px;
+    grid-template-areas:
+        'sept huit neuf DEL'
+        'quatre cinq six addition'
+        'un deux trois soustraction'
+        'virgule zero division multiplication'
+        'reset reset egal egal';
 }
 
 button {
-  font-family: "Spartan", sans-serif;
-  font-size: 32px;
-  border-radius: 20px;
+    font-family: 'Spartan', sans-serif;
+    font-size: 32px;
+    border-radius: 20px;
 }
 
 .value {
-  box-shadow: 0px 9px 0px hsl(28, 16%, 65%);
-  border: solid 1px hsl(28, 16%, 65%);
-  background: hsl(30, 25%, 89%);
-  color: hsl(221, 14%, 31%);
+    box-shadow: 0px 9px 0px hsl(28, 16%, 65%);
+    border: solid 1px hsl(28, 16%, 65%);
+    background: hsl(30, 25%, 89%);
+    color: hsl(221, 14%, 31%);
 }
 
 .value:active {
-  box-shadow: 0px 2px 0px hsl(28, 16%, 65%);
-  position: relative;
-  top: 7px;
+    box-shadow: 0px 2px 0px hsl(28, 16%, 65%);
+    position: relative;
+    top: 7px;
 }
 
-#del,
-#reset {
-  box-shadow: 0px 9px 0px hsl(224, 28%, 35%);
-  border: solid 1px hsl(224, 28%, 35%);
-  background-color: hsl(225, 21%, 49%);
-  color: white;
+.del,
+.reset {
+    box-shadow: 0px 9px 0px hsl(224, 28%, 35%);
+    border: solid 1px hsl(224, 28%, 35%);
+    background-color: hsl(225, 21%, 49%);
+    color: white;
 }
 
-#del:active,
-#reset:active {
-  box-shadow: 0px 2px 0px hsl(224, 28%, 35%);
-  position: relative;
-  top: 7px;
+.del:active,
+.reset:active {
+    box-shadow: 0px 2px 0px hsl(224, 28%, 35%);
+    position: relative;
+    top: 7px;
 }
 
-#egal {
-  grid-area: egal;
-  box-shadow: 0px 9px 0px hsl(6, 70%, 34%);
-  border: solid 1px hsl(6, 70%, 34%);
-  background-color: hsl(6, 63%, 50%);
-  color: white;
+.egal {
+    grid-area: egal;
+    box-shadow: 0px 9px 0px hsl(6, 70%, 34%);
+    border: solid 1px hsl(6, 70%, 34%);
+    background-color: hsl(6, 63%, 50%);
+    color: white;
 }
 
-#egal:active {
-  box-shadow: 0px 2px 0px hsl(6, 70%, 34%);
-  position: relative;
-  top: 7px;
+.egal:active {
+    box-shadow: 0px 2px 0px hsl(6, 70%, 34%);
+    position: relative;
+    top: 7px;
 }
 
-#zero {
-  grid-area: zero;
+.zero {
+    grid-area: zero;
 }
 
-#un {
-  grid-area: un;
+.un {
+    grid-area: un;
 }
 
-#deux {
-  grid-area: deux;
+.deux {
+    grid-area: deux;
 }
 
-#trois {
-  grid-area: trois;
+.trois {
+    grid-area: trois;
 }
 
-#quatre {
-  grid-area: quatre;
+.quatre {
+    grid-area: quatre;
 }
 
-#cinq {
-  grid-area: cinq;
+.cinq {
+    grid-area: cinq;
 }
 
-#six {
-  grid-area: six;
+.six {
+    grid-area: six;
 }
 
-#sept {
-  grid-area: sept;
+.sept {
+    grid-area: sept;
 }
 
-#huit {
-  grid-area: huit;
+.huit {
+    grid-area: huit;
 }
 
-#neuf {
-  grid-area: neuf;
+.neuf {
+    grid-area: neuf;
 }
 
-#multiplication {
-  grid-area: multiplication;
+.multiplication {
+    grid-area: multiplication;
 }
 
-#division {
-  grid-area: division;
+.division {
+    grid-area: division;
 }
 
-#addition {
-  grid-area: addition;
+.addition {
+    grid-area: addition;
 }
 
-#soustraction {
-  grid-area: soustraction;
+.soustraction {
+    grid-area: soustraction;
 }
 
-#virgule {
-  grid-area: virgule;
+.virgule {
+    grid-area: virgule;
 }
 
-#del {
-  grid-area: DEL;
+.del {
+    grid-area: DEL;
 }
 
-#reset {
-  grid-area: reset;
+.reset {
+    grid-area: reset;
+}
+
+.screen-scientific {
+    margin-left: 30px;
+    background-color: hsl(224, 36%, 15%);
+    width: 740px;
+    height: 150px;
+    border-radius: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.screen-scientific-content {
+    float: right;
+    width: 720px;
+}
+
+.numpadscientific-bg {
+    margin-left: 30px;
+    margin-top: 20px;
+    background-color: hsl(223, 31%, 20%);
+    width: 740px;
+    height: 590px;
+    border-radius: 15px;
+}
+
+.numpadscientific-calc {
+    font-family: 'Spartan', sans-serif;
+    width: 720px;
+    height: 560px;
+    margin-left: 10px;
+    padding-top: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 17px;
+    grid-template-areas:
+        'pourcent sept huit neuf DEL'
+        'parentheseouverte quatre cinq six  parentheseferme'
+        'addition un deux trois  soustraction'
+        'multiplication virgule zero puissance  division '
+        'reset reset racinecarree egal egal';
+}
+
+.values {
+    box-shadow: 0px 9px 0px hsl(28, 16%, 65%);
+    border: solid 1px hsl(28, 16%, 65%);
+    background: hsl(30, 25%, 89%);
+    color: hsl(221, 14%, 31%);
+}
+
+.values:active {
+    box-shadow: 0px 2px 0px hsl(28, 16%, 65%);
+    position: relative;
+    top: 7px;
+}
+
+#dels,
+#resets {
+    box-shadow: 0px 9px 0px hsl(224, 28%, 35%);
+    border: solid 1px hsl(224, 28%, 35%);
+    background-color: hsl(225, 21%, 49%);
+    color: white;
+}
+
+#dels:active,
+#resets:active {
+    box-shadow: 0px 2px 0px hsl(224, 28%, 35%);
+    position: relative;
+    top: 7px;
+}
+
+#dels {
+    grid-area: DEL;
+}
+
+#resets {
+    grid-area: reset;
+}
+
+#egals {
+    grid-area: egal;
+    box-shadow: 0px 9px 0px hsl(6, 70%, 34%);
+    border: solid 1px hsl(6, 70%, 34%);
+    background-color: hsl(6, 63%, 50%);
+    color: white;
+}
+
+#egals:active {
+    box-shadow: 0px 2px 0px hsl(6, 70%, 34%);
+    position: relative;
+    top: 7px;
+}
+
+#perc {
+    grid-area: pourcent;
+}
+
+#parentheseouverte {
+    grid-area: parentheseouverte;
+}
+
+#parentheseferme {
+    grid-area: parentheseferme;
+}
+
+#racinecaree {
+    grid-area: racinecarree;
+}
+
+#puissance {
+    grid-area: puissance;
+}
+
+#zeros,
+#uns,
+#deuxs,
+#troiss,
+#quatres,
+#cinqs,
+#sixs,
+#septs,
+#huits,
+#neufs {
+    background-color: #7c8cbd;
+    border: solid 1px hsl(225, 21%, 49%);
+    color: white;
+    box-shadow: 0px 9px 0px hsl(225, 21%, 49%);
+}
+
+#zeros:active,
+#uns:active,
+#deuxs:active,
+#troiss:active,
+#quatres:active,
+#cinqs:active,
+#sixs:active,
+#septs:active,
+#huits:active,
+#neufs:active {
+    box-shadow: 0px 2px 0px hsl(225, 21%, 49%);
+    position: relative;
+    top: 7px;
+}
+
+#zeros {
+    grid-area: zero;
+}
+
+#uns {
+    grid-area: un;
+}
+
+#deuxs {
+    grid-area: deux;
+}
+
+#troiss {
+    grid-area: trois;
+}
+
+#quatres {
+    grid-area: quatre;
+}
+
+#cinqs {
+    grid-area: cinq;
+}
+
+#sixs {
+    grid-area: six;
+}
+
+#septs {
+    grid-area: sept;
+}
+
+#huits {
+    grid-area: huit;
+}
+
+#neufs {
+    grid-area: neuf;
+}
+
+#outputs {
+    height: 80px;
+    font-size: 80px;
+    margin-top: 0px;
+    padding-top: 35px;
+    text-align: right;
+}
+
+.error {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    border: red 5px solid;
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
 }

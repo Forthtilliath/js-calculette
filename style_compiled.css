@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #3a4764;
+  font-family: "Spartan", sans-serif;
+  color: white;
+}
+body .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 850px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+body .container section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  padding-top: calc(3rem + 50vh) 1.5rem 5rem;
+}
+body .container section .title-calc {
+  margin-left: 30px;
+}
+body .container section .screen-calc {
+  margin-left: 30px;
+  background-color: #182034;
+  width: 740px;
+  height: 150px;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+}
+body .container section .screen-calc .screen-calc-content {
+  float: right;
+  width: 720px;
+}
+body .container section .screen-calc .screen-calc-content .output {
+  height: 80px;
+  font-size: 80px;
+  margin-top: 0px;
+  padding-top: 35px;
+  text-align: right;
+}
+body .container section .numpad-bg {
+  margin-left: 30px;
+  margin-top: 20px;
+  background-color: #232c43;
+  width: 740px;
+  height: 590px;
+  border-radius: 15px;
+}
+body .container section .numpad-bg .numpad-calc {
+  width: 720px;
+  height: 560px;
+  margin-left: 10px;
+  padding-top: 10px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 17px;
+  grid-template-areas: "sept huit neuf del" "quatre cinq six addition" "un deux trois soustraction" "virgule zero division multiplication" "reset reset egal egal";
+}
+body .container section .numpad-bg .numpad-calc button {
+  font-family: "Spartan", sans-serif;
+  font-size: 32px;
+  border-radius: 20px;
+}
+body .container section .numpad-bg .numpad-calc button:active {
+  position: relative;
+  top: 7px;
+}
+body .container section .numpad-bg .numpad-calc button.value {
+  box-shadow: 0px 9px 0px #b4a597;
+  border: solid 1px #b4a597;
+  background: #eae3dc;
+  color: #444b5a;
+}
+body .container section .numpad-bg .numpad-calc button.value:active {
+  box-shadow: 0px 2px 0px #b4a597;
+}
+body .container section .numpad-bg .numpad-calc button.del, body .container section .numpad-bg .numpad-calc button.reset {
+  box-shadow: 0px 9px 0px #404e72;
+  border: solid 1px #404e72;
+  background-color: #637097;
+  color: white;
+}
+body .container section .numpad-bg .numpad-calc button.del:active, body .container section .numpad-bg .numpad-calc button.reset:active {
+  box-shadow: 0px 2px 0px #404e72;
+}
+body .container section .numpad-bg .numpad-calc button.egal {
+  grid-area: egal;
+  box-shadow: 0px 9px 0px #93261a;
+  border: solid 1px #93261a;
+  background-color: #d03f2f;
+  color: white;
+}
+body .container section .numpad-bg .numpad-calc button.egal:active {
+  box-shadow: 0px 2px 0px #93261a;
+}
+body .container section .numpad-bg .numpad-calc button.zero {
+  grid-area: zero;
+}
+body .container section .numpad-bg .numpad-calc button.un {
+  grid-area: un;
+}
+body .container section .numpad-bg .numpad-calc button.deux {
+  grid-area: deux;
+}
+body .container section .numpad-bg .numpad-calc button.trois {
+  grid-area: trois;
+}
+body .container section .numpad-bg .numpad-calc button.quatre {
+  grid-area: quatre;
+}
+body .container section .numpad-bg .numpad-calc button.cinq {
+  grid-area: cinq;
+}
+body .container section .numpad-bg .numpad-calc button.six {
+  grid-area: six;
+}
+body .container section .numpad-bg .numpad-calc button.sept {
+  grid-area: sept;
+}
+body .container section .numpad-bg .numpad-calc button.huit {
+  grid-area: huit;
+}
+body .container section .numpad-bg .numpad-calc button.neuf {
+  grid-area: neuf;
+}
+body .container section .numpad-bg .numpad-calc button.multiplication {
+  grid-area: multiplication;
+}
+body .container section .numpad-bg .numpad-calc button.division {
+  grid-area: division;
+}
+body .container section .numpad-bg .numpad-calc button.addition {
+  grid-area: addition;
+}
+body .container section .numpad-bg .numpad-calc button.soustraction {
+  grid-area: soustraction;
+}
+body .container section .numpad-bg .numpad-calc button.del {
+  grid-area: del;
+}
+body .container section .numpad-bg .numpad-calc button.reset {
+  grid-area: reset;
+}
+body .container section .numpad-bg .numpad-calc button.egal {
+  grid-area: egal;
+}
+body .container section.scientific .numpad-calc {
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "pourcent sept huit neuf del" "parentheseouverte quatre cinq six  parentheseferme" "addition un deux trois  soustraction" "multiplication virgule zero puissance  division " "reset reset racinecarree egal egal";
+}
+body .container section.scientific .numpad-calc button.zero {
+  grid-area: zero;
+}
+body .container section.scientific .numpad-calc button.un {
+  grid-area: un;
+}
+body .container section.scientific .numpad-calc button.deux {
+  grid-area: deux;
+}
+body .container section.scientific .numpad-calc button.trois {
+  grid-area: trois;
+}
+body .container section.scientific .numpad-calc button.quatre {
+  grid-area: quatre;
+}
+body .container section.scientific .numpad-calc button.cinq {
+  grid-area: cinq;
+}
+body .container section.scientific .numpad-calc button.six {
+  grid-area: six;
+}
+body .container section.scientific .numpad-calc button.sept {
+  grid-area: sept;
+}
+body .container section.scientific .numpad-calc button.huit {
+  grid-area: huit;
+}
+body .container section.scientific .numpad-calc button.neuf {
+  grid-area: neuf;
+}
+body .container section.scientific .numpad-calc button.multiplication {
+  grid-area: multiplication;
+}
+body .container section.scientific .numpad-calc button.division {
+  grid-area: division;
+}
+body .container section.scientific .numpad-calc button.addition {
+  grid-area: addition;
+}
+body .container section.scientific .numpad-calc button.soustraction {
+  grid-area: soustraction;
+}
+body .container section.scientific .numpad-calc button.del {
+  grid-area: del;
+}
+body .container section.scientific .numpad-calc button.reset {
+  grid-area: reset;
+}
+body .container section.scientific .numpad-calc button.egal {
+  grid-area: egal;
+}
+
+/*# sourceMappingURL=style_compiled.css.map */
