@@ -52,7 +52,7 @@ numbers.forEach((value, index) =>
 const datasValuesCalcSct = [
     ...datasValuesCalcStd,
     {
-        class: 'pourcent',
+        class: 'module',
         value: '%',
         text: '%',
     },
@@ -68,13 +68,13 @@ const datasValuesCalcSct = [
     },
     {
         class: 'racinecarree',
-        value: '',
+        value: '[racine]',
         text: '√',
     },
     {
         class: 'puissance',
-        value: '%',
-        text: '^',
+        value: '[puissance]',
+        text: 'x<sup>y</sup>',
     },
 ];
 

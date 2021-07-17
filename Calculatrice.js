@@ -1,7 +1,7 @@
 class Calculatrice {
     constructor(container, datas) {
         this.container = container;
-        this.generateStandard(datas);
+        this.generateDisplay(datas);
 
         this.outpout = container.querySelector('.output');
         this.screenCalc = container.querySelector('.screen-calc');
@@ -18,6 +18,9 @@ class Calculatrice {
         this.createEvents();
     }
 
+    /**
+     * Initialisation des valeurs pour la calculette
+     **/
     init() {
         this.formuleCalcul = '';
         this.formuleDisplayed = '0';
@@ -27,15 +30,14 @@ class Calculatrice {
      * Genere les boutons de la calculatrice en fonction des données passées en paramètre
      * @param {{ class: String, text: String, value?: String }[]} datas JSON
      **/
-    generateStandard(datas) {
+    generateDisplay(datas) {
         for (const data of datas) {
-            console.log(data, data.hasOwnProperty('value'));
             let button = document.createElement('button');
             button.classList.add(
-                data.class,
                 data.hasOwnProperty('value') ? 'value' : 'action',
+                data.class,
             );
-            button.textContent = data.text;
+            button.innerHTML = data.text;
             if (data.hasOwnProperty('value')) button.value = data.value;
             this.container.querySelector('.numpad-calc').append(button);
         }
@@ -51,6 +53,22 @@ class Calculatrice {
         this.btnClear.addEventListener('click', () => this.clear());
         this.btnSolution.addEventListener('click', () => this.solution());
         this.btnDel.addEventListener('click', () => this.del());
+    }
+
+    display(button) {
+        this.removeZero();
+        if (this.outpout.innerText.length >= this.maxLength) {
+            this.screenCalc.classList.add('error');
+            return;
+        }
+        this.screenCalc.classList.remove('error');
+        if (this.lastValueIsOperator() && this.isOperator(button.value)) {
+            this.del();
+        }
+        this.setDisplay(
+            this.outpout.innerText + button.innerText,
+            this.formuleCalcul + button.value,
+        );
     }
 
     /**
@@ -103,29 +121,12 @@ class Calculatrice {
         }
     }
 
-    display(button) {
-        this.removeZero();
-        if (this.outpout.innerText.length >= this.maxLength) {
-            this.screenCalc.classList.add('error');
-            return;
-        }
-        this.screenCalc.classList.remove('error');
-        if (this.lastValueIsOperator() && this.isOperator(button.value)) {
-            this.del();
-        }
-        this.setDisplay(
-            this.outpout.innerText + button.innerText,
-            this.formuleCalcul + button.value,
-        );
-    }
-
     solution() {
         this.removeZero();
         try {
             let resolu = eval(this.formuleCalcul);
             this.setDisplay(resolu, resolu);
         } catch (e) {
-            console.log('error', this.screenCalc);
             this.screenCalc.classList.add('error');
         }
     }
