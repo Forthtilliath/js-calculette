@@ -125,7 +125,7 @@ class Calculatrice {
             let resolu = eval(this.formuleCalcul);
             this.setDisplay(resolu, resolu);
         } catch (e) {
-            console.log('error');
+            console.log('error', this.screenCalc);
             this.screenCalc.classList.add('error');
         }
     }
