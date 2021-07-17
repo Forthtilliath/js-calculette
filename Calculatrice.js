@@ -23,6 +23,7 @@ class Calculatrice {
      **/
     init() {
         this.formuleCalcul = '';
+        this.outpout.innerText = '0';
         this.formuleDisplayed = '0';
     }
 
@@ -50,11 +51,14 @@ class Calculatrice {
         this.btnValues.forEach((btn) =>
             btn.addEventListener('click', (e) => this.display(e.target)),
         );
-        this.btnClear.addEventListener('click', () => this.clear());
+        this.btnClear.addEventListener('click', () => this.init());
         this.btnSolution.addEventListener('click', () => this.solution());
         this.btnDel.addEventListener('click', () => this.del());
     }
 
+    /**
+     * Vérifie si tout est ok avant de met à jour l'affichage
+     **/
     display(button) {
         this.removeZero();
         if (this.outpout.innerText.length >= this.maxLength) {
@@ -97,17 +101,10 @@ class Calculatrice {
     }
 
     /**
-     * Remet à 0 la calculette
-     **/
-    clear() {
-        this.setDisplay('0');
-    }
-
-    /**
      * Supprime le dernier caractère
      **/
     del() {
-        if (this.outpout.innerText.length === 1) this.clear();
+        if (this.outpout.innerText.length === 1) this.init();
         else
             this.setDisplay(
                 this.outpout.innerText.slice(0, -1),
